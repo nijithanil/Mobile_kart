@@ -1,0 +1,10 @@
+@media (min-width: 1600px){
+        .thumbnail {
+        position: fixed;
+        margin-left :150px;
+        }
+       .caption{
+        align-items: center;
+        }
+
+}

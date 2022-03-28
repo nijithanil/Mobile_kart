@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'MOBILEKART-MENUBAR/style/stylesheet.css' %}" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>Mobilekart</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/"><img src="{% static 'MOBILEKART-MENUBAR/Images/Mobilekart_LOGO.png' %}" width="105px" height="35px"/></a>
+<!--    <p><a href="#">Explore <span>Plus<img src="{% static 'MOBILEKART-MENUBAR/Images/plus.png' %}" width="10px" height="10px"/></span></a></p>-->
+        </div>
+        <div class="header-center">
+            <input class="header-center-input" type="text" placeholder="search for your mobile brands" title="search for your brands"/>
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="header-right">
+            <a href="/" class="f1">Home</a>
+            <a href="#" class="active">Login</a>
+            <a href="#" class="f1">more<i class="fa fa-chevron-down"></i></a>
+            <a href="#" class="f2"><i class="fa fa-shopping-cart"></i>cart</i></a>
+        </div>
+    </header>
+    <section>
+        <div class="category-row">
+            <div class="category-col">
+                <img src="{% static 'MOBILEKART-MENUBAR/Images/Mobile-PNG-Image-HD.png' %}" alt="Image of groceries">
+                <a style=" text-decoration: none; color: black;" href="/"><h5 style="text-transform: uppercase;">all brands</h5></a>
+            </div>
+            {% for i in ct %}
+            <div class="category-col">
+                <img src="{{i.logo.url}}" alt="Image of offers "><br>
+                <a style=" text-decoration: none; color: black;" href={{i.get_url}}><h5 style="text-transform: uppercase;">{{i.name}}</h5></a>
+            </div>
+            {% endfor %}
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/grocery.png' %}" alt="Image of groceries">-->
+<!--                <h5>Grocery</h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/mobiles.png' %}" alt="Image of mobiles">-->
+<!--                <h5>Mobiles</h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img class="i1" src="{% static 'MOBILEKART-MENUBAR/Images/fashion.png' %}" alt="Image of fashion clothes">-->
+<!--                    <div class="dropdown">-->
+<!--                    <h5 class="fash">Fashion</h5>-->
+<!--                    </div>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/electronics.png' %}" alt="Image of electronics">-->
+<!--                <h5>Electronics</i></h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/home.jpg' %}" alt="Image of home">-->
+<!--                <h5>Home</h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/appliances.png' %}" alt="Image of appliances">-->
+<!--                <h5>Appliances</h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/travel.png' %}" alt="Image of plane">-->
+<!--                <h5>Travel</h5>-->
+<!--            </div>-->
+<!--            <div class="category-col">-->
+<!--                <img src="{% static 'MOBILEKART-MENUBAR/Images/beauty,toys and more.png' %}" alt="Image of toys,beauty products and more">-->
+<!--                <h5>Beauty,Toys & More</h5>-->
+<!--            </div>-->
+        </div>
+
+    </section>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% extends 'Menubar.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilekart home page</title>
+    <link rel="stylesheet" href="{% static 'MOBILEKART-HOME/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'MOBILEKART-HOME/css/utils.css' %}">
+    <link rel="stylesheet" href="{% static 'MOBILEKART-HOME/css/responsive.css' %}">
+</head>
+
+<body style="background-color:#f1f3f6;">
+    <main>
+        <div class="container">
+<!--            <div class="slider">-->
+<!--                <img src="https://source.unsplash.com/1600x500/?mobiles" style="width:100%;height:450px;border-radius: 20px;" alt="">-->
+<!--            </div>-->
+            <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img class="center" src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" style="width:1680px;height:300px;border-radius: 20px; margin-top:40px;">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="{% static 'MOBILEKART-HOME/picture5.jpeg.jpeg' %}" style="width:1680px;height:300px;border-radius: 20px;margin-top:40px;">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="{% static 'MOBILEKART-HOME/mobilekart_offer_img1.jpg' %}" style="width:1680px;height:300px;border-radius: 20px;margin-top:40px;">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+            <div class="card" style="background-color:#fff">
+                <h2 style="margin-left:46px;" class="my-2 ">MOBILES</h2>
+                <div class="cards">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                    {%for i in pr %}
+                    <div class="card-item">
+                        <a href="{{i.get_url}}"> <img  src="{{ i.img.url }}" alt="" width="115px" height="220px"></a>
+                        <div class="lines">
+                            <p class="text-center my-1">{{ i.name }}</p>
+                            <p class="text-center my-1" style="color:green;">shop now</p>
+                            <p class="text-center my-1">By {{ i.brand }}</p>
+                        </div>
+                    </div> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="card" style="background-color:#fff">
+                <h2 class="my-2">Furniture Bestsellers</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <img src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" alt="" width="200px">
+                        <div class="lines">
+                            <p class="text-center my-1">Cricket Bats</p>
+                            <p class="text-center my-1">Min 20% off</p>
+                            <p class="text-center my-1">Grab Now!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="my-2">Best Battery Phones</h2>
+                <div class="cards">
+                    <div class="card-item">
+                        <img src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" alt="" width="200px">
+                        <div class="lines">
+                            <p class="text-center my-1">Cricket Bats</p>
+                            <p class="text-center my-1">Min 20% off</p>
+                            <p class="text-center my-1">Grab Now!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="flex-all-center" style="background-color:#172337;">
+        <p>Copyright &copy; MyCart.com </p>
+    </footer>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+</body>
+</html>
+{% endblock %}
