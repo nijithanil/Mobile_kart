@@ -6,16 +6,16 @@ from .models import *
 
 class catagdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ['name', 'slug', 'logo']
-    lisi_editable = ['name', 'slug', 'logo']
+    # list_display = ['name', 'slug', 'logo']
+    # lisi_editable = ['name', 'slug', 'logo']
 
 
 admin.site.register(categ, catagdmin)
 
 
 class prodAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'price', 'stock', 'img', 'available']
-    list_editable = ['price', 'stock', 'img', 'available']
+    # list_display = ['model_img']
+    # list_editable = ['model_img']
     prepopulated_fields = {'slug': ('name',)}
 
 
