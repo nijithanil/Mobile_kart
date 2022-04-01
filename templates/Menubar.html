@@ -10,14 +10,15 @@
     <title>Mobilekart</title>
 </head>
 <body>
-    <header>
+    <header style="position: fixed; top: 0; width: 100%;">
         <div class="header-left">
             <a href="/"><img src="{% static 'MOBILEKART-MENUBAR/Images/Mobilekart_LOGO.png' %}" width="105px" height="35px"/></a>
-<!--    <p><a href="#">Explore <span>Plus<img src="{% static 'MOBILEKART-MENUBAR/Images/plus.png' %}" width="10px" height="10px"/></span></a></p>-->
         </div>
         <div class="header-center">
-            <input class="header-center-input" type="text" placeholder="search for your mobile brands" title="search for your brands"/>
-            <i class="fa fa-search"></i>
+                    <form action="{% url 'search' %}" method="get">
+                         <input class="header-center-input" type="text" placeholder="search for your mobile products" name="query" title="search for your products"/>
+                         <a href="/"><button> <i style="width:30px;height:100px;padding-top:4px;" class="fa fa-search"></i> </button></a>
+                    </form>
         </div>
         <div class="header-right">
             <a href="/" class="f1">Home</a>
@@ -26,7 +27,7 @@
             <a href="#" class="f2"><i class="fa fa-shopping-cart"></i>cart</i></a>
         </div>
     </header>
-    <section>
+    <section  style="margin-top:60px;">
         <div class="category-row">
             <div class="category-col">
                 <img src="{% static 'MOBILEKART-MENUBAR/Images/Mobile-PNG-Image-HD.png' %}" alt="Image of groceries">

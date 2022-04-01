@@ -30,7 +30,9 @@ class products(models.Model):
     off_prize = models.CharField(max_length=20, default='')
     off_prize2 = models.CharField(max_length=20, default='')
     percentage_off = models.CharField(max_length=100, default='')
-    brand = models.ImageField(upload_to='brand logo', default='')
+    brand = models.CharField(max_length=100,default='')
+    brand_image = models.ImageField(upload_to='brand logo image', default='')
+    Warranty_details_link = models.URLField(max_length=500,default='')
     mobile_feature1 = models.TextField(default='')
     mobile_feature2 = models.TextField(default='')
     mobile_feature3 = models.TextField(default='')
@@ -41,6 +43,7 @@ class products(models.Model):
     MP_description = models.TextField(default='')
     display = models.CharField(max_length=100, default='')
     display_desc = models.TextField(default='')
+    view_all_features_link = models.URLField(max_length=500,default='')
 
     # -----------GENERAL---------------
 
@@ -49,11 +52,12 @@ class products(models.Model):
     color = models.CharField(max_length=50, default='')
     browse_type = models.CharField(max_length=100, default='')
     sim_type = models.CharField(max_length=50, default='')
-    model_RAM = models.ImageField(default='')
-    model_ROM = models.ImageField(default='')
+    model_RAM = models.CharField(max_length=100,default='')
+    model_ROM = models.CharField(max_length=100,default='')
     stock = models.IntegerField()
     available = models.BooleanField()
     category = models.ForeignKey(categ, on_delete=models.CASCADE)
+    read_more_link = models.URLField(max_length=500,default='')
 
     def get_url(self):
         return reverse('details', args=[self.category.slug, self.slug])

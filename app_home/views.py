@@ -23,15 +23,14 @@ def proddetails(request, c_slug, product_slug):
         prod = products.objects.get(category__slug=c_slug, slug=product_slug)
     except Exception as e:
         raise e
-    return render(request, 'product_page.html', {'mob': prod})
+    return render(request, 'product_page.html', {'pr': prod})
 
 
-# def searching(request):
-#     prod = None
-#     query = None
-#     if 'q' in request.GET:
-#         query = request.GET.get('q')
-#         prod = products.objects.all().filter(Q(name__contains=query) | Q(desc__contains=query))
-#     return render(request, 'search.html', {'qr': query, 'pr': prod})
-
-
+def searching(request):
+    # prod = None
+    # query = None
+    # if 'q' in request.GET:
+    query = request.GET.get('query')
+    prod = products.objects.all().filter(Q(name__contains=query) | Q(product_desc__contains=query))
+    params = {'qr': query, 'pr': prod}
+    return render(request, 'search.html', params)

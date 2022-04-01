@@ -57,18 +57,17 @@
     </section>
 
     <!-- header description -->
-
     <section id="sec" >
         <div class="container-fluid">
             <div class="row">
                 <!-- product picture -->
                 <div class="col-sm-5">
                     <div class="thumbnail">
-                        <img src="https://m.media-amazon.com/images/I/419B1alPH9L.jpg"
-                            class="img-responsive" alt="iphonex">
+                        <img src="{{pr.model_img.url}}"
+                            class="img-responsive" alt="Image unavailable" >
+                    </div>
                         <div class="caption">
                             <div class="row buttons" style="margin-right:30px;">
-
                                 <button  class="btn col-sm-4 col-sm-offset-2 btn-lg "
                                     style="background-color:#ff9f00; color:#fff; font-size:1em;"><Span
                                         class="glyphicon glyphicon-shopping-cart"></Span>&nbsp;ADD TO CART</button>
@@ -77,12 +76,11 @@
                                         class="glyphicon glyphicon-shopping-cart"></Span>BUY NOW</button>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <!-- product Description -->
                 <div class="col-sm-7 desc">
                     <div>
-                        <h3><b>SAMSUNG Galaxy F12 (Sky Blue, 64 GB) (4 GB RAM)</b></h3>
+                        <h3><b>{{pr.name}}({{pr.color}}, {{pr.model_ROM}}) ({{pr.model_RAM}})</b></h3>
                         <div class="row">
                             <div class="col-sm-2">
 <!--                                <span class="label label-success">4.2 <span-->
@@ -96,10 +94,11 @@
                             </div> -->
                         </div>
                         <div>
-                            <h5 style="color:green;">Extra Rs 2000 offer</h5>
-                            <h3>Rs 10,999 <del>Rs 12,999</del>
-                                <strong style="color:green;"> 15 % offer</strong>
+                            <h5 style="color:green;">Extra Rs {{pr.extra_reduce_amount}} offer</h5>
+                            <h3>Rs {{pr.off_prize2}} <del>Rs {{pr.off_prize}}</del>
+                                <strong style="color:green;"> {{pr.percentage_off}} % offer</strong>
                             </h3>
+                            <h3>Available Stock : {{pr.stock}}</h3>
                             <!-- <h4><b>Available offers</b></h4> -->
                         </div>
                         <!-- <div>
@@ -118,11 +117,11 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-3">
-                                <a class="btn btn-default btn-block"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Logo_samsung_5.jpg" style="width:60px;height:30px;"></a>
+                                <a class="btn btn-default btn-block"><img src="{{pr.brand_image.url}}" style="width:70px;height:43px;"></a>
                             </div>
                             <div class="col-sm-9">
 
-                                <h5>1 Year Warranty Provided by the Manufacturer from Date of Purchase <a href="">Know
+                                <h5>1 Year Warranty Provided by the Manufacturer from Date of Purchase <a href="{{pr.Warranty_details_link}}">Know
                                         More</a></h5>
                             </div>
                         </div>
@@ -152,10 +151,10 @@
                                 <!-- <strong class="col-sm-3">Highlights</strong> -->
                                 <ul class="col-sm-6">
                                     <br>
-                                    <li>4 GB RAM | 64 GB ROM | Expandable Upto 512 GB</li>
-                                    <li>16.55 cm (6.515 inch) HD+ Display</li>
-                                    <li>48MP + 5MP + 2MP + 2MP | 8MP Front Camera</li>
-                                    <li>6000 mAh Lithium-ion Battery</li>
+                                    <li>{{pr.mobile_feature1}}</li>
+                                    <li>{{pr.mobile_feature2}}</li>
+                                    <li>{{pr.mobile_feature3}}</li>
+                                    <li>{{pr.mobile_feature4}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -165,25 +164,18 @@
                                 <div class="panel-body">
                                     <div class="col-sm-12">
                                         <h3>Product Description</h3>
-                                        <p>
-                                            The Samsung Galaxy F12 features a stylish design and innovative features so
-                                            that you can enjoy using the mobile phone for all that you need. Thanks to
-                                            its 6000 mAh battery, you will have a blast using your phone for a long time
-                                            while you stream content and much more. It provides surround sound with
-                                            Dolby Atmos so that you can delve into a world of rich music. And, it’s
-                                            equipped with features that ensure the protection of your mobile phone.</p>
+                                        <p>{{pr.product_desc}}</p>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="panel-body">
                                     <div class="col-sm-12">
                                         <div class="col-sm-4">
-                                            <img src="https://sm.mashable.com/mashable_in/photo/default/realme5pro7_8aqf.jpg" alt="camera" class="img-responsive">
+                                            <img src="{{pr.camera_img.url}}" alt="camera" class="img-responsive">
                                         </div>
                                         <div class="col-sm-8">
-                                            <h3>48 MP Quad Camera</h3>
-                                            <p>This mobile features a 48 MP Quad Camera that helps capture rich colours
-                                                along with sharp details so that every shot you take is spectacular.</p>
+                                            <h3>{{pr.mega_pixel}}</h3>
+                                            <p>{{pr.MP_description}}</p>
                                         </div>
 
                                     </div>
@@ -194,9 +186,8 @@
                                     <div class="col-sm-12">
 
                                         <div class="col-sm-8">
-                                            <h3>HD+ Infinity-V Display</h3>
-                                            <p>You can enjoy smooth viewing on the HD+ Infinity-V Display of the mobile
-                                                phone with its 90 Hz refresh rate.</p>
+                                            <h3>{{pr.display}}</h3>
+                                            <p>{{pr.display_desc}}</p>
                                         </div>
                                         <div class="col-sm-4">
                                             <!-- <img src="HD.jpe" alt="video quality" class="img-responsive"> -->
@@ -206,7 +197,7 @@
 
                                 </div>
                                 <div class="panel-footer">
-                                    <h4><a href="#" style="text-decoration: none;">View all features</a></h4>
+                                    <h4><a href="{{pr.view_all_features_link}}" style="text-decoration: none;">View all features</a></h4>
                                 </div>
 
                             </div>
@@ -221,46 +212,49 @@
                                         <tbody>
                                             <tr>
                                                 <td class="col-sm-4">In The Box</td>
-                                                <td class="col-sm-8">Handset, Data Cable and Travel Adaptor, Ejection
-                                                    Pin, Manual</td>
+                                                <td class="col-sm-8">{{pr.in_the_box}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-sm-4">Model Number
                                                 </td>
-                                                <td class="col-sm-8">SM-F127GLBGINS</td>
+                                                <td class="col-sm-8">{{pr.model_number}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-sm-4">Model Name
                                                 </td>
-                                                <td class="col-sm-8">Galaxy F12</td>
+                                                <td class="col-sm-8">{{pr.name}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-sm-4">Color
                                                 </td>
                                                 <td class="col-sm-8">
-                                                    Sky Blue</td>
+                                                    {{pr.color}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-sm-4">Browse Type
                                                 </td>
-                                                <td class="col-sm-8">Smartphones</td>
+                                                <td class="col-sm-8">{{pr.browse_type}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="col-sm-4">SIM Type
                                                 </td>
-                                                <td class="col-sm-8">Dual Sim</td>
+                                                <td class="col-sm-8">{{pr.sim_type}}</td>
                                             </tr>
                                             <tr>
-                                                <td class="col-sm-4">Hybrid Sim Slot
+                                                <td class="col-sm-4">RAM
                                                 </td>
-                                                <td class="col-sm-8">No</td>
+                                                <td class="col-sm-8">{{pr.model_RAM}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-sm-4">ROM
+                                                </td>
+                                                <td class="col-sm-8">{{pr.model_ROM}}</td>
                                             </tr>
                                         </tbody>
-
                                     </table>
                                 </div>
                                 <div class="panel-footer">
-                                    <h3><a href="https://www.realme.com/in/realme-5-pro/specs">Read more</a></h3>
+                                    <h3><a href="{{pr.read_more_link}}">Read more</a></h3>
                                 </div>
                             </div>
 
