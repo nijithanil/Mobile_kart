@@ -32,7 +32,7 @@
                 <div class="cards">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                     {% for i in pr %}
                     <div class="card-item">
-                        <a href="{{i.get_url}}"> <img  src="{{ i.model_img.url }}" alt="" width="115px" height="220px"></a>
+                        <a href="{{i.get_url}}"> <img  src="{{ i.model_img.url }}" alt="" style="height:300px; object-fit:cover;"></a>
                         <div class="lines">
                             <p class="text-center my-1">{{ i.name }}</p>
                             <p class="text-center my-1" style="color:green;">shop now</p>

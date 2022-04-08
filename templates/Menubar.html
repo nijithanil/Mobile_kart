@@ -8,34 +8,51 @@
     <link href="{% static 'MOBILEKART-MENUBAR/style/stylesheet.css' %}" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <title>Mobilekart</title>
+    <style>
+        #cart_numbers {
+            position: absolute;
+            top: 7px;
+            text-align: center;
+            border-radius: 7px;
+            width: 18px;
+            height: 18px;
+            background-color: #ff6161;
+            border: 1px solid #fff;
+            font-weight: 400;
+            color: #f0f0f0;
+            line-height: 16px;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
     <header style="position: fixed; top: 0; width: 100%;">
         <div class="header-left">
-            <a href="/"><img src="{% static 'MOBILEKART-MENUBAR/Images/Mobilekart_LOGO.png' %}" width="105px" height="35px"/></a>
+            <a href="/"><img src="{% static 'MOBILEKART-MENUBAR/Images/Mobilekart_LOGO.png' %}" width="105px" height="37px"/></a>
         </div>
         <div class="header-center">
                     <form action="{% url 'search' %}" method="get">
-                         <input class="header-center-input" type="text" placeholder="search for your mobile products" name="query" title="search for your products"/>
-                         <a href="/"><button> <i style="width:30px;height:100px;padding-top:4px;" class="fa fa-search"></i> </button></a>
+                         <input class="header-center-input" type="text" placeholder="search for your mobile products" name="query" title="search for your products">
+                         <button style=" border: none; width:20px;height:20px;background-color:#fff;font-size:20px;" class="fa fa-search"></button>
                     </form>
         </div>
         <div class="header-right">
             <a href="/" class="f1">Home</a>
             <a href="#" class="active">Login</a>
+            <a href="" class="active">Register</a>
             <a href="#" class="f1">more<i class="fa fa-chevron-down"></i></a>
-            <a href="#" class="f2"><i class="fa fa-shopping-cart"></i>cart</i></a>
+            <a href="{% url 'cartdetails' %}" class="f2"><i class="fa fa-shopping-cart"></i>cart<i id="cart_numbers">{{itc}}</i></a>
         </div>
     </header>
     <section  style="margin-top:60px;">
         <div class="category-row">
             <div class="category-col">
-                <img src="{% static 'MOBILEKART-MENUBAR/Images/Mobile-PNG-Image-HD.png' %}" alt="Image of groceries">
+                <a href="/"> <img src="{% static 'MOBILEKART-MENUBAR/Images/Mobile-PNG-Image-HD.png' %}" alt="Image of groceries"></a>
                 <a style=" text-decoration: none; color: black;" href="/"><h5 style="text-transform: uppercase;">all brands</h5></a>
             </div>
             {% for i in ct %}
-            <div class="category-col">
-                <img src="{{i.logo.url}}" alt="Image of offers "><br>
+            <div class="category-col" style="padding-top:30px;">
+                <img style="width:40px;height:30px;padding" src="{{i.logo.url}}" alt="Image of offers "><br>
                 <a style=" text-decoration: none; color: black;" href={{i.get_url}}><h5 style="text-transform: uppercase;">{{i.name}}</h5></a>
             </div>
             {% endfor %}

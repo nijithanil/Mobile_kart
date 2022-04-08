@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+{% extends 'Menubar.html' %}
+{% load static %}
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="MOBILEKART-CART PAGE/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'MOBILEKART-CART PAGE/css/style.css' %}">
     <title>shopping cart</title>
 </head>
 <body class="bg-light">
@@ -16,21 +19,24 @@
     <!-- left side div -->
     <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
     <div class="card p-4">
-    <h2 class="py-4 font-weight-bold">Cart (2 items)</h2>
+    <h2 class="py-4 font-weight-bold">My Cart ({{itc}})</h2>
     <div class="row">
     <!-- cart images div -->
+        {% for i in ci %}
     <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-    <img src="MOBILEKART-CART PAGE/personal_bg.jpg" class="img-fluid" alt="MOBILEKART-CART PAGE/personal_bg.jpg">
+        <a href="{{i.prodt.get_url}}"><img style="height:160px; object-fit:cover;" src="{{i.prodt.model_img.url}}" class="img-fluid" alt="{{i.prodt.name}}" /></a>
     </div>
-    <!-- cart product details -->
+        <!-- cart product details -->
     <div class="col-md-7 col-11 mx-auto px-4 mt-2">
     <div class="row">
     <!-- product name  -->
     <div class="col-6 card-title">
-    <h1 class="mb-4 product_name">Blue Zara Tshirt</h1>
-    <p class="mb-2">SHIRT - BLUE</p>
-    <p class="mb-2">COLOR: BLUE</p>
-    <p class="mb-3">SIZE: M</p>
+    <h1 class="mb-4 product_name">{{i.prodt.name}}</h1>
+        Quantity : {{i.quan}}<br>
+    <p class="mb-2">RAM : {{i.prodt.model_RAM}}</p>
+    <p class="mb-2">product id : {{i.prodt.id}}</p>
+    <p class="mb-2">ROM : {{i.prodt.model_ROM}}</p>
+    <p class="mb-2">COLOR: {{i.prodt.color}}</p>
     </div>
     <!-- quantity inc dec -->
 
@@ -38,18 +44,20 @@
     <!-- //remover move and price -->
     <div class="row">
     <div class="col-8 d-flex justify-content-between remove_wish">
-    <p><i class="fas fa-trash-alt"></i> </p>
+        <a style="text-decoration:none" href="{% url 'remove' i.prodt.id %}"><p><i class="fas fa-trash-alt"></i> Remove</p></a>
     <div>
-        <p><a href=""><i class="fa fa-plus" style="font-size:14px"></i></a> &nbsp;&nbsp;0&nbsp;&nbsp; <a href=""><i class="fa fa-minus" style="font-size:14px"></i></a></p>
+        <p><a href="{% url 'addcart' i.prodt.id %}"><i class="fa fa-plus" style="font-size:14px"></i></a> &nbsp;&nbsp;{{i.quan}}&nbsp;&nbsp; <a href="{% url 'cart_decrement' i.prodt.id %}"><i class="fa fa-minus" style= "font-size:14px"></i></a></p>
     </div>
     <!-- <p><i class="fas fa-heart"></i>MOVE TO WISH LIST </p> -->
     </div>
     <div class="col-4 d-flex justify-content-end price_money">
-    <h3>$<span id="itemval">0.00 </span></h3>
+    <h3>$ <span>{{i.total}}</span></h3>
     </div>
     </div>
     </div>
+        {% endfor %}
     </div>
+
     </div>
     <hr/>
     <!-- 2nd cart product -->
@@ -60,18 +68,18 @@
     <h2 class="product_name mb-5">The Total Amount Of</h2>
     <div class="price_indiv d-flex justify-content-between">
     <p>Product amount</p>
-    <p>$<span id="product_total_amt">0.00</span></p>
+    <p>$<span id="product_total_amt">{{t}}</span></p>
     </div>
     <div class="price_indiv d-flex justify-content-between">
-    <p>Shipping Charge</p>
+    <p>Delivery Charges</p>
     <p>$<span id="shipping_charge">50.0</span></p>
     </div>
     <hr />
     <div class="total-amt d-flex justify-content-between font-weight-bold">
-    <p>The total amount of (including VAT)</p>
-    <p>$<span id="total_cart_amt">0.00</span></p>
+    <p>The total amount of (including charges)</p>
+    <p>$<span id="total_cart_amt">{{total}}</span></p>
     </div>
-    <button class="btn btn-primary text-uppercase">Checkout</button>
+    <a href="{% url 'address_page' %}"><button style="background-color:#fb641b;border:none;" class="btn btn-primary text-uppercase">Place order</button></a>
     </div>
     <!-- discount code part -->
     <div class="discount_code mt-3 shadow">
@@ -107,3 +115,4 @@
 
     </body>
 </html>
+{% endblock %}

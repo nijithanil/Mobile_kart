@@ -24,12 +24,12 @@
 
 <div class="mySlides fade">
   <div class="numbertext"></div>
-  <img class="center" src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" style="width:1680px;height:300px;border-radius: 20px; margin-top:40px;">
+  <img class="center" src="{% static 'MOBILEKART-HOME/flipkart_home_first_pic.jpg' %}" style="width:1680px;height:300px;border-radius: 20px; margin-top:40px;">
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext"></div>
-  <img src="{% static 'MOBILEKART-HOME/picture5.jpeg.jpeg' %}" style="width:1680px;height:300px;border-radius: 20px;margin-top:40px;">
+  <img src="{% static 'MOBILEKART-HOME/flipkart_home_second_pic.jpg' %}" style="width:1680px;height:300px;border-radius: 20px;margin-top:40px;">
 </div>
 
 <div class="mySlides fade">
@@ -45,53 +45,30 @@
   <span class="dot"></span>
   <span class="dot"></span>
 </div>
-            <div class="card" style="background-color:#fff">
-                <h2 style="margin-left:46px;" class="my-2 ">MOBILES</h2>
-                <div class="cards">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                    {%for i in pr %}
-                    <div class="card-item">
-                        <a href="{{i.get_url}}"> <img  src="{{ i.model_img.url }}" alt="" width="115px" height="220px"></a>
+            <div class="card" style="background-color:#fff;padding-left:90px;">
+                <h2 style="margin-left:46px;" class="my-2 ">&nbsp; </h2>
+                <div class="cards">
+                    {% for i in pg.object_list %}
+                    <div class="card-item" style="padding-left:90px;" >
+                        <a href="{{i.get_url}}"> <img  src="{{ i.model_img.url }}" alt="" style="height:300px; object-fit:cover;"></a>
                         <div class="lines">
                             <p class="text-center my-1">{{ i.name }}</p>
                             <p class="text-center my-1" style="color:green;">shop now</p>
                             <p class="text-center my-1">By {{ i.brand }}</p>
                         </div>
-                    </div> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                    </div>
                     {% endfor %}
                 </div>
             </div>
-
-            <div class="card" style="background-color:#fff">
-                <h2 class="my-2">Furniture Bestsellers</h2>
-                <div class="cards">
-                    <div class="card-item">
-                        <img src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" alt="" width="200px">
-                        <div class="lines">
-                            <p class="text-center my-1">Cricket Bats</p>
-                            <p class="text-center my-1">Min 20% off</p>
-                            <p class="text-center my-1">Grab Now!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 class="my-2">Best Battery Phones</h2>
-                <div class="cards">
-                    <div class="card-item">
-                        <img src="{% static 'MOBILEKART-HOME/picture1.jpg' %}" alt="" width="200px">
-                        <div class="lines">
-                            <p class="text-center my-1">Cricket Bats</p>
-                            <p class="text-center my-1">Min 20% off</p>
-                            <p class="text-center my-1">Grab Now!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div><br><br>
+        <center>
+      {% for p in pg.paginator.page_range %}
+      <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p%} active {% endif %}">{{p}}</a>
+      {% endfor %}
+    </center><br><br><br>
     </main>
     <footer class="flex-all-center" style="background-color:#172337;">
-        <p>Copyright &copy; MyCart.com </p>
+        <p>Copyright &copy; Mobilekart.com </p>
     </footer>
 <script>
 var slideIndex = 0;

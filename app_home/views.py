@@ -12,10 +12,21 @@ def home(request, c_slug=None):
     if c_slug != None:
         c_page = get_object_or_404(categ, slug=c_slug)
         prodt = products.objects.filter(category=c_page, available=True)
+
     else:
         prodt = products.objects.all().filter(available=True)
     cat = categ.objects.all()
-    return render(request, 'Home.html', {'pr': prodt, 'ct': cat})
+    paginator = Paginator(prodt, 5)
+
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+    try:
+        pro = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        pro = paginator.page(paginator.num_pages)
+    return render(request, 'Home.html', {'pr': prodt, 'ct': cat, 'pg': pro})
 
 
 def proddetails(request, c_slug, product_slug):

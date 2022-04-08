@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% extends 'Menubar.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Register Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+</head>
+<body style="background-color:#f1f3f6;" class="font-family-karla h-screen">
+
+    <div class="container">
+
+        <!-- Register Section -->
+        <div class="w-full flex flex-col">
+            <br>
+            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+                <p class="text-center text-3xl">DELIVERY ADDRESS</p>
+                <form>
+
+                  <div class="row">
+                <div class="col">
+                  <label></label>
+
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col">
+                  <label></label>
+
+                  <input type="text" class="form-control" placeholder="10-Digit mobile number">
+                </div>
+              </div>
+                    <div class="form-group">
+                      <label for="inputAddress"></label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Address (Area and Street)">
+                    </div>
+
+                    <div class="row">
+                  <div class="col">
+                    <label></label>
+
+                    <input type="text" class="form-control" placeholder="City">
+                  </div>
+                  <div class="col">
+                    <label></label>
+
+                    <input type="text" class="form-control" placeholder="State">
+                  </div>
+                  <div class="col">
+                    <label></label>
+
+                    <input type="text" class="form-control" placeholder="Pincode">
+                  </div>
+                </div>
+                <div class="row">
+              <div class="col">
+                <label></label>
+
+                <input type="text" class="form-control" placeholder="Landmark">
+              </div>
+              <div class="col">
+                <label></label>
+
+                <input type="text" class="form-control" placeholder="Anothor phone number ">
+              </div>
+            </div>
+            <br>
+                    <!-- <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Choose...</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                      </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                      <div class="form-check">
+                      </div>
+                    </div> -->
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                  </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
+
