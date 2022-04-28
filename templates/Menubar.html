@@ -38,9 +38,15 @@
         </div>
         <div class="header-right">
             <a href="/" class="f1">Home</a>
-            <a href="#" class="active">Login</a>
-            <a href="" class="active">Register</a>
-            <a href="#" class="f1">more<i class="fa fa-chevron-down"></i></a>
+<!--            <a href="{% url 'register' %}" class="active">Register</a>-->
+            {% if user.is_authenticated %}
+            <div style="color:#fff"><b>{{user.get_username}}</b></div>
+            <a href="{% url 'logout' %}" class="active">Logout</a>
+                          {% else %}
+            <a href="{% url 'login' %}" class="active">Login</a>
+                          {% endif %}
+
+<!--            <a href="#" class="f1">more<i class="fa fa-chevron-down"></i></a>-->
             <a href="{% url 'cartdetails' %}" class="f2"><i class="fa fa-shopping-cart"></i>cart<i id="cart_numbers">{{itc}}</i></a>
         </div>
     </header>
@@ -52,7 +58,7 @@
             </div>
             {% for i in ct %}
             <div class="category-col" style="padding-top:30px;">
-                <img style="width:40px;height:30px;padding" src="{{i.logo.url}}" alt="Image of offers "><br>
+                <img style="width:40px;height:40px;" src="{{i.logo.url}}" alt="Image of offers "><br>
                 <a style=" text-decoration: none; color: black;" href={{i.get_url}}><h5 style="text-transform: uppercase;">{{i.name}}</h5></a>
             </div>
             {% endfor %}

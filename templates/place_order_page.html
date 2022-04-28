@@ -28,80 +28,74 @@
             <br>
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                 <p class="text-center text-3xl">DELIVERY ADDRESS</p>
-                <form>
+                <form action="success" method="POST">
+                    {% csrf_token %}
 
                   <div class="row">
                 <div class="col">
                   <label></label>
 
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input type="text" class="form-control" placeholder="First name" required>
                 </div>
                 <div class="col">
                   <label></label>
 
-                  <input type="text" class="form-control" placeholder="10-Digit mobile number">
+                  <input type="text" class="form-control" placeholder="10-Digit mobile number" required>
                 </div>
               </div>
                     <div class="form-group">
                       <label for="inputAddress"></label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Address (Area and Street)">
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Address (Area and Street)" required>
                     </div>
 
                     <div class="row">
                   <div class="col">
                     <label></label>
 
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control" placeholder="City" required>
                   </div>
                   <div class="col">
                     <label></label>
 
-                    <input type="text" class="form-control" placeholder="State">
+                    <input type="text" class="form-control" placeholder="State" required>
                   </div>
                   <div class="col">
                     <label></label>
 
-                    <input type="text" class="form-control" placeholder="Pincode">
+                    <input type="text" class="form-control" placeholder="Pincode" required>
                   </div>
                 </div>
                 <div class="row">
               <div class="col">
                 <label></label>
 
-                <input type="text" class="form-control" placeholder="Landmark">
+                <input type="text" class="form-control" placeholder="Landmark" required>
               </div>
               <div class="col">
                 <label></label>
-
-                <input type="text" class="form-control" placeholder="Anothor phone number ">
+                <input type="text" class="form-control" placeholder="Anothor phone number " required>
               </div>
             </div>
-            <br>
-                    <!-- <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
-                          <option selected>Choose...</option>
-                          <option>...</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
-                      </div>
-                    </div> -->
-                    <!-- <div class="form-group">
-                      <div class="form-check">
-                      </div>
-                    </div> -->
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+            <br><br>
+<!--                    Razorpay-->
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"
+                            data-key="rzp_test_tLsuerhwpepX4n"
+                            data-amount="50000"
+                            data-currency="INR"
+                            data-order_id="{{payment.id}}"
+                            data-buttontext="Pay with Razorpay"
+                            data-name="Professional Cipher"
+                            data-description="Django and Data"
+                            data-image="https://example.com/your_logo.jpg"
+                            data-prefill.name="Nijith"
+                            data-prefill.email="nijithanil501@gmail.com"
+                            data-theme.color="#F37254" >
+                    </script>
                   </form>
+                <br>
+<!--                cash on delivery-->
+                    <a href="/cart/success"> <button style="background:green;color:white" ><h6>CASH ON DEVIVERY</h6></button><br><br></a>
             </div>
-
         </div>
     </div>
 </body>

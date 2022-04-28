@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from app_home.models import *
 from django.core.exceptions import ObjectDoesNotExist
+import razorpay
+from django.views.decorators.csrf import csrf_exempt
+
+client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
 
 
 # Create your views here.
@@ -16,8 +20,9 @@ def cart_details(request, ct_items=0, tot=0, count=0, total=0):
             total += (i.prodt.off_prize2 * i.quan + shippingx_charge)
 
             count += i.quan
+
     except ObjectDoesNotExist:
-        pass
+        return render(request, 'Cart.html')
     return render(request, 'Cart.html', {'ci': ct_items, 't': tot, 'total': total, 'cn': count})
 
 
@@ -67,4 +72,15 @@ def cart_delete(request, product_id):
 
 
 def address_page(request):
+    if request.method == 'POST':
+        amount: 50000
+        order_currency: 'INR'
+        client = razorpay.Client(
+            auth=('rzp_test_tLsuerhwpepX4n', 'hjMbtAd9WeCdhpi84jQL0wyo'))
+
+        payment = client.order.create({'amount': 'amount', 'currency': 'INR', 'payment_capture': '1'})
     return render(request, 'place_order_page.html')
+
+
+def success(request):
+    return render(request, "success.html")

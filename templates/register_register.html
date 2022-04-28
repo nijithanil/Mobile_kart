@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'MOBILEKART-REGISTER_FORM/fonts/material-icon/css/material-design-iconic-font.min.css ' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'MOBILEKART-REGISTER_FORM/css/style.css' %}">
+
+<!--    cart style-->
+    <link href="{% static 'MOBILEKART-MENUBAR/style/stylesheet.css' %}" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+</head>
+<body class="main">
+<div >
+
+    <header class="navbar-fixed-top">
+        <div class="header-left">
+            <a href="/"><img  src="{% static 'MOBILEKART-MENUBAR/Images/Mobilekart_LOGO.png' %} " width="105px" height="35px"/></a>
+<!--    <p><a href="#">Explore <span>Plus<img src="{% static 'MOBILEKART-MENUBAR/Images/plus.png' %}" width="10px" height="10px"/></span></a></p>-->
+        </div>
+        <div class="header-center">
+            <input class="header-center-input" type="text" placeholder="search for your mobile brands" title="search for your brands"/>
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="header-right">
+          <a href="/" class="f1">Home</a>
+<!--            <a href="{% url 'register' %}" class="active">Register</a>-->
+            {% if user.is_authenticated %}
+              <li style="color:#fff"><b>{{user.get_username}}</b></li>
+            <a href="{% url 'logout' %}" class="active">Logout</a>
+                          {% else %}
+            <a href="{% url 'login' %}" class="active">Login</a>
+                          {% endif %}
+
+<!--            <a href="#" class="f1">more<i class="fa fa-chevron-down"></i></a>-->
+            <a href="{% url 'cartdetails' %}" class="f2"><i class="fa fa-shopping-cart"></i>cart<i id="cart_numbers">{{itc}}</i></a>
+        </div>
+    </header>
+
+        <section class="signup" style="margin:90px;">
+<!--             <img src="{% static 'images/login_background.jpg' %}" alt="">-->
+            <div class="container" >
+                <div class="signup-content">
+                    <form method="POST"  action="register"  class="signup-form">
+                            {% csrf_token %}
+                        <h2 class="form-title">Create account</h2>
+                             <div style="color : #ff6161 ; text-align:center;">
+                            {% for message in messages %}
+                            <h3><b>{{message}}</b></h3>
+                            {% endfor %}
+                             </div><br>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="username" id="username" placeholder="Username"/>
+                        </div>
+                           <div class="form-group">
+                            <input type="text" class="form-input" name="first_name" id="first_name" placeholder="First_name"/>
+                        </div>
+                           <div class="form-group">
+                            <input type="text" class="form-input" name="last_name" id="last_name" placeholder="Last_name"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password1" id="password1" placeholder="Password"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password2" id="password2" placeholder="Repeat your password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    <div>
+                        <br>
+                        Have already an account ? <a href="login" class="loginhere-link">Login here</a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'MOBILEKART-REGISTER_FORM/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'MOBILEKART-REGISTER_FORM/js/main.js' %}"></script>
+</body>
+</html>
