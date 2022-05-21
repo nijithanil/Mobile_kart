@@ -1,6 +1,6 @@
 # Mobile_kart
 
-This is a E-commerce website User can register and purchase mobilekart products. Filter option , search option , login , logout, register and payment method also
+This is a E-commerce website like a flipkart User can register and purchase mobilekart products. Filter option , search option , login , logout, register and payment method also
 and import the Razorpay payment method so we can purchase the product using the card and upi ids like googlepay phonepay paytm etc. Production management can edit,delete,update and views datas.
 compleately like a flipkart website.
 
